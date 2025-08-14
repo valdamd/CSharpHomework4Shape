@@ -1,21 +1,28 @@
-﻿using ShapeAlgotitm;
+﻿// <copyright file="Square.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 namespace ShapeAlgoritm;
 public sealed class Square : Shape
 {
-    private double _side;
+    private readonly double side;
+
     public Square(double side)
     {
-        if (side <= 0)
-            throw new ArgumentException("Side length must be positive.");
-        _side = side;
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(side);
+
+        this.side = side;
     }
-    public override double CalculateArea() => _side * _side;
-    public override double CalculatePerimeter() => 4 * _side;
-    public override string ToString()
-    {
-        return $"Shape: Square\n" +
-               $"Side: {_side}\n" +
-               $"Perimeter: {CalculatePerimeter():F2}\n" +
-               $"Area: {CalculateArea():F2}";
-    }
+
+    public override double CalculateArea() => this.side * this.side;
+
+    public override double CalculatePerimeter() => 4 * this.side;
+
+    public override string ToString() =>
+        $$"""
+          Shape: Square
+          Side: {{this.side}}
+          Perimeter: {{this.CalculatePerimeter():F2}}
+          Area: {{this.CalculateArea():F2}}
+          """;
 }

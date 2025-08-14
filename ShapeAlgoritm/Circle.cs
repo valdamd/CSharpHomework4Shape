@@ -1,30 +1,27 @@
-﻿namespace ShapeAlgotitm;
+﻿// <copyright file="Circle.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace ShapeAlgoritm;
 public sealed class Circle : Shape
 {
-    private double _radius;
+    private readonly double radius;
 
     public Circle(double radius)
     {
-        if (radius > 0)
-        {
-            _radius = radius;
-        }
-        else
-        {
-            throw new ArgumentException("radius must be positive");
-        }
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(radius);
+        this.radius = radius;
     }
 
-    public override double CalculateArea()=> Math.PI * _radius * _radius;
-    
+    public override double CalculateArea() => Math.PI * this.radius * this.radius;
 
-    public override double CalculatePerimeter() => 2 * Math.PI * _radius;
+    public override double CalculatePerimeter() => 2 * Math.PI * this.radius;
 
-    public override string ToString()
-    {
-        return $"Shape: Circle\n" +
-               $"Radius: {_radius}\n" +
-               $"Perimeter: {CalculatePerimeter():F2}\n" +
-               $"Area: {CalculateArea():F2}";
-    }
+    public override string ToString() =>
+        $$"""
+          Shape: Circle
+          Radius: {{this.radius}}
+          Perimeter: {{this.CalculatePerimeter():F2}}
+          Area: {{this.CalculateArea():F2}}
+          """;
 }

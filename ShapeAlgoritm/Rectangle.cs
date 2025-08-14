@@ -1,29 +1,31 @@
-﻿using ShapeAlgotitm;
+﻿// <copyright file="Rectangle.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace ShapeAlgoritm;
 public sealed class Rectangle : Shape
 {
-    private double _width;
-    private double _height;
-    public Rectangle(double width, double height) {
-        if (Validation(width, height)) 
-            throw new ArgumentException("width and height must be greater than zero");
-        _width = width;
-        _height = height;
-        
-    }
+    private readonly double width;
+    private readonly double height;
 
-    public override double CalculateArea() => _width * _height;
-    
-    public override double CalculatePerimeter() => 2 * (_width + _height);
-    
-    private bool Validation(double width, double height) => width <= 0 || height <= 0;
-
-    public override string ToString()
+    public Rectangle(double width, double height)
     {
-        return $"Shape: Rectangle\n" +
-               $"Width: {_width}, Height: {_height}\n" +
-               $"Perimeter: {CalculatePerimeter():F2}\n" +
-               $"Area: {CalculateArea():F2}";
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(width);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(height);
+
+        this.width = width;
+        this.height = height;
     }
+
+    public override double CalculateArea() => this.width * this.height;
+
+    public override double CalculatePerimeter() => 2 * (this.width + this.height);
+
+    public override string ToString() =>
+        $$"""
+          Shape: Rectangle
+          Width: {{this.width}}, Height: {{this.height}}
+          Perimeter: {{this.CalculatePerimeter():F2}}
+          Area: {{this.CalculateArea():F2}}
+          """;
 }

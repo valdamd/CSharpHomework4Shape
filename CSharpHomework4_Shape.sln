@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpHomework4_Shape", "CSharpHomework4_Shape\CSharpHomework4_Shape.csproj", "{83E509A7-83F8-4A3B-B7B7-325E2A3E5266}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShape", "TestShape\TestShape.csproj", "{83E509A7-83F8-4A3B-B7B7-325E2A3E5266}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeAlgoritm", "ShapeAlgoritm\ShapeAlgoritm.csproj", "{A900FD43-D81B-48AD-8964-93909B7CF894}"
 EndProject

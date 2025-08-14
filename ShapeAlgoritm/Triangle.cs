@@ -1,36 +1,40 @@
-﻿namespace ShapeAlgotitm;
+﻿// <copyright file="Triangle.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace ShapeAlgotitm;
+
+using ShapeAlgoritm;
+
 public sealed class Triangle : Shape
 {
-    private double _sideA;
-    private double _sideB;
-    private double _sideC;
-    public Triangle(double sideA, double sideB, double sideC)
+    private readonly double a;
+    private readonly double b;
+    private readonly double c;
+
+    public Triangle(double a, double b, double c)
     {
-        if (HasPositiveSides(sideA, sideB, sideC) && TringleExists(sideA, sideB, sideC)) {
-            _sideA = sideA;
-            _sideB = sideB;
-            _sideC = sideC;
-        }else {
-            throw new ArgumentException("The triangle doesn't have positive sides or it doesn't exist");
-        }
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(a);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(b);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(c);
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
+
     public override double CalculateArea()
     {
-        // Implementing the area calculation using Heron's formula
-        double s = (_sideA + _sideB + _sideC) / 2;
-        return Math.Sqrt(s * (s - _sideA) * (s - _sideB) * (s - _sideC));
+        double s = (this.a + this.b + this.c) / 2;
+        return Math.Sqrt(s * (s - this.a) * (s - this.b) * (s - this.c));
     }
-    public override double CalculatePerimeter() =>_sideA + _sideB + _sideC;
-    private static bool TringleExists(double sideA, double sideB, double sideC) => 
-        sideA + sideB > sideC && 
-        sideB + sideC > sideA && 
-        sideC + sideA > sideB;
-    private bool HasPositiveSides(double sideA, double sideB, double sideC) => sideA > 0 && sideB > 0 && sideC > 0;
-    public override string ToString()
-    {
-        return $"Shape: Triangle\n" +
-               $"Sides: {_sideA}, {_sideB}, {_sideC}\n" +
-               $"Perimeter: {CalculatePerimeter():F2}\n" +
-               $"Area: {CalculateArea():F2}";
-    }
+
+    public override double CalculatePerimeter() => this.a + this.b + this.c;
+
+    public override string ToString() =>
+        $$"""
+          Shape: Triangle
+          Sides: {{this.a}}, {{this.b}}, {{this.c}}
+          Perimeter: {{this.CalculatePerimeter():F2}}
+          Area: {{this.CalculateArea():F2}}
+          """;
 }
