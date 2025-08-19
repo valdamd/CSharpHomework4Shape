@@ -6,7 +6,7 @@ namespace ShapeAlgotitm;
 
 using ShapeAlgoritm;
 
-public sealed class Triangle : Shape
+internal sealed class Triangle : Shape
 {
     private readonly double a;
     private readonly double b;

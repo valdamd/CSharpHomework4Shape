@@ -3,7 +3,7 @@
 // </copyright>
 
 namespace ShapeAlgoritm;
-public sealed class Square : Shape
+internal sealed class Square : Shape
 {
     private readonly double side;
 

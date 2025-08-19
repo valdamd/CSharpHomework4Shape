@@ -3,7 +3,7 @@
 // </copyright>
 
 namespace ShapeAlgoritm;
-public sealed class Circle : Shape
+internal sealed class Circle : Shape
 {
     private readonly double radius;
 

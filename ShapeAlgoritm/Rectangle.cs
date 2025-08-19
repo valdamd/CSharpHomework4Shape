@@ -3,7 +3,7 @@
 // </copyright>
 
 namespace ShapeAlgoritm;
-public sealed class Rectangle : Shape
+internal sealed class Rectangle : Shape
 {
     private readonly double width;
     private readonly double height;
