@@ -9,7 +9,7 @@ using ShapeAlgoritm;
 using ShapeAlgotitm;
 using Xunit;
 
-public class ShapeTest
+public sealed class ShapeTest
 {
     [Fact]
     public void Circle_CorrectAreaAndPerimeter()
